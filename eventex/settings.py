@@ -134,3 +134,48 @@ AWS_HEADERS = {
     'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
     'Cache-Control': 'max-age=42608000',
 }
+
+'''
+OBS. Necessita de estudo especifico em relação a questões de segurança.
+# CONFIGURAR AWS S3 Arquivos
+##  static files
+1. Habilitar hospedagem de site estático.
+2. Liberar acesso público.
+3. Política do bucket:
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::eventex-zsl/*"
+        }
+    ]
+}
+4. politica CORS.
+[
+    {
+        "AllowedHeaders": [
+            "*"
+        ],
+        "AllowedMethods": [
+            "GET",
+            "PUT",
+            "POST",
+            "DELETE"
+        ],
+        "AllowedOrigins": [
+            "*"
+        ],
+        "ExposeHeaders": [
+            "x-amz-server-side-encryption",
+            "x-amz-request-id",
+            "x-amz-id-2"
+        ],
+        "MaxAgeSeconds": 3000
+    }
+]
+
+'''
