@@ -3,9 +3,9 @@ from django.test import TestCase
 
 # Create your tests here.
 
-class hometest(TestCase):
+class HomeTest(TestCase):
 
-    def setup(self):
+    def setUp(self):
         self.response = self.client.get('/')
 
     def test_get(self):
