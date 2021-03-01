@@ -15,14 +15,15 @@ def subscribe(request):
                                     form.cleaned_data)
             mail.send_mail('Confirmação de inscrição',
                            body,
-                           'contato@eventex.com.br',
-                           ['contato@eventex.com.br', form.cleaned_data['email']])
+                           'jiradoviraia@gmail.com',
+                           ['jiradoviraia@gmail.com', form.cleaned_data['email']])
 
             messages.success(request, 'Inscrição realizada com sucesso!')
 
             return HttpResponseRedirect('/inscricao/')
         else:
             return render(request, 'subscriptions/subscription_form.html', {'form':form})
+
     else:
         context = {'form': SubscriptionForm()}
         return render(request, 'subscriptions/subscription_form.html',context)
