@@ -38,7 +38,7 @@ def create(request):
 
     #Success feedback
 
-    return HttpResponseRedirect(r('subscriptions:detail', subscription.pk))
+    return HttpResponseRedirect(r('subscriptions:detail', subscription.pk.int))
 
 
 

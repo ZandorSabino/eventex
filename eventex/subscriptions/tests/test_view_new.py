@@ -48,10 +48,11 @@ class SubscriptionsNewPostValid(TestCase):
                     email='zandor@leal.net',
                     phone='21-99999-9999')
         self.resp = self.client.post(r('subscriptions:new'), data)
+        self.id = Subscription.objects.get().id
 
     def test_post(self):
         """Valid POST should redirect to /inscricao/1/"""
-        self.assertRedirects(self.resp, r('subscriptions:detail', 1))
+        self.assertRedirects(self.resp, r('subscriptions:detail', self.id.int))
 
     def test_send_subscribe_email(self):
         self.assertEqual(1, len(mail.outbox))
@@ -85,6 +86,6 @@ class SubscriptionsNewPostInvalid(TestCase):
 class TemplateRegressionTest(TestCase):
     def test_template_has_non_field_errors(self):
         invalid_data = dict(name='Zandor Leal', cpf='12345678901')
-        response = self.client.post(r'subscription:new'), invalid_data
+        response = self.client.post(r('subscriptions:new'), invalid_data)
 
         self.assertContains(response, '<ul class="errorlist nonfield">')
