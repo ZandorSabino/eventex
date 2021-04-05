@@ -38,7 +38,8 @@ class HomeTest(TestCase):
                     'href="{}#sponsors"'.format(r('home')),
                     'href="{}#speakers"'.format(r('home')),
                     'href="{}#register"'.format(r('home')),
-                    'href="{}#venue"'.format(r('home'))
+                    'href="{}"'.format(r('talk_list')),
+                    'href="{}#venue"'.format(r('home')),
                     ]
         for expected in contents:
             with self.subTest():
