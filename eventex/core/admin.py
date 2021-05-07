@@ -8,9 +8,10 @@ class ContactInline(admin.TabularInline):
     model = Contact
     extra = 1
 
+
 class SpeakerModelAdmin(admin.ModelAdmin):
     inlines = [ContactInline]
-    prepopulated_fields = {'slug':('name',)}
+    prepopulated_fields = {'slug': ('name',)}
     list_display = ['name', 'photo_img', 'website_link', 'email', 'phone']
 
     def website_link(self, obj):
