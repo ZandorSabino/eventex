@@ -9,9 +9,8 @@ install:
   - pip install pipenv
   - pipenv install
 before_script:
-  - SECRET_KEY=python contrib/secret_gen.py
   - echo "DEBUG=False" >> .env
-  - echo "SECRET_KEY=$SECRET_KEY" >> .env
+  - echo "SECRET_KEY=IS_A_NOT_GOOD_SECRET_JUST_USE_FOR_TEST" >> .env
 test_script:
   - pipenv run pytest
 branches:
