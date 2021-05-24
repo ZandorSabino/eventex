@@ -7,7 +7,8 @@ python:
   - "pypy"
 install:
   - pip install pipenv
-  - pipenv install
+  - pipenv lock
+  - pipenv sync
 test_script:
   - copy contrib/env-sample .env
   - pipenv run pytest
