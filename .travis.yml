@@ -7,10 +7,13 @@ python:
   - "pypy"
 install:
   - pip install pipenv
-  - pipenv lock
-  - pipenv sync
+  - pipenv install
+before_script:
+  - SECRET_KEY=python contrib/secret_gen.py
+  - echo "DEBUG=False" >> .env
+  - echo "SECRET_KEY=$SECRET_KEY" >> .env
 test_script:
-  - copy contrib/env-sample .env
   - pipenv run pytest
-recipients:
-  - zandorsabino@gmail.com
+branches:
+  only:
+    - master
