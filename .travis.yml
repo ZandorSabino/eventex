@@ -6,13 +6,10 @@ python:
   - "3.9"
   - "pypy"
 install:
-  - pip install pipenv
-  - pipenv install
-before_script:
-  - echo "DEBUG=False" >> .env
-  - echo "SECRET_KEY=IS_A_NOT_GOOD_SECRET_JUST_USE_FOR_TEST" >> .env
-test_script:
-  - pipenv run tests
-branches:
-  only:
-    - master
+  - cp contrib/env-sample .env
+  - pip install -q -r requirements.txt
+  - pip install coveralls
+script:
+  - coverage run --source='.' manage.py test
+after_success:
+  - coveralls
