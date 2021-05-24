@@ -1,6 +1,6 @@
 # Eventex
 
-Sistema de eventos encomendado pela Morena.
+Sistema desenvolvido no curso [Welcome To The Django](https://henriquebastos.net/produtos/welcome-to-the-django).
 
 ## Como desenvolver?
 
@@ -9,16 +9,16 @@ Sistema de eventos encomendado pela Morena.
 3. Ative o virtualenv.
 4. Instale as dependências.
 5. Configure a instância com o .env
-6. Execute od testes
+6. Execute os testes
 
 ```console
 git clone git@github.com/ZandorSabino/eventex.git wttd
 cd wttd
 python -m venv .wttd
-.wttd/bin/activate.bat
-pip install -r requirements-dev.txt
+pip install pipenv
+pipenv install --dev
 copy contrib/env-sample .env
-python manage.py test
+pytest
 ```
 
 
@@ -33,10 +33,9 @@ python manage.py test
 
 ```console
 heroku create minhainstancia
-heroku config:push
 set secret_key=python contrib/secret_gen.py
 heroku config:set SECRET_KEY=%secret_key%
 heroku config:set DEBUG=False
-# configuro o email
+# configure o email
 git push heroku master --force
 ```
