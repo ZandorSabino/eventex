@@ -12,7 +12,7 @@ before_script:
   - echo "DEBUG=False" >> .env
   - echo "SECRET_KEY=IS_A_NOT_GOOD_SECRET_JUST_USE_FOR_TEST" >> .env
 test_script:
-  - pipenv run pytest
+  - pipenv run tests
 branches:
   only:
     - master
