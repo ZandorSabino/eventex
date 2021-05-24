@@ -9,6 +9,7 @@ install:
   - pip install pipenv
   - pipenv install
 test_script:
+  - copy contrib/env-sample .env
   - pipenv run pytest
 recipients:
   - zandorsabino@gmail.com
