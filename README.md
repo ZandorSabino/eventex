@@ -2,6 +2,8 @@
 
 ___
 [![Build Status](https://travis-ci.com/ZandorSabino/eventex.svg?branch=master)](https://travis-ci.com/ZandorSabino/eventex)
+
+[![Coverage Status](https://coveralls.io/repos/github/ZandorSabino/eventex/badge.svg?branch=master)](https://coveralls.io/github/ZandorSabino/eventex?branch=master)
 ___
 
 Sistema desenvolvido no curso [Welcome To The Django](https://henriquebastos.net/produtos/welcome-to-the-django).
