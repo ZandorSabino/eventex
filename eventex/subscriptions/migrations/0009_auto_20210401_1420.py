@@ -7,13 +7,18 @@ import uuid
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('subscriptions', '0008_auto_20210401_1055'),
+        ("subscriptions", "0008_auto_20210401_1055"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='subscription',
-            name='uuid',
-            field=models.UUIDField(default=uuid.UUID('64d0fdca-c571-421c-a7f3-20011984d661'), editable=False, primary_key=True, serialize=False),
+            model_name="subscription",
+            name="uuid",
+            field=models.UUIDField(
+                default=uuid.UUID("64d0fdca-c571-421c-a7f3-20011984d661"),
+                editable=False,
+                primary_key=True,
+                serialize=False,
+            ),
         ),
     ]

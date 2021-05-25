@@ -22,85 +22,83 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = config("SECRET_KEY")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config("DEBUG", default=False, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='', cast=Csv())
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="", cast=Csv())
 
-DEFAULT_FROM_EMAIL = 'contato@eventex.com.br'
+DEFAULT_FROM_EMAIL = "contato@eventex.com.br"
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'test_without_migrations',
-    'django_extensions',
-    'eventex.core',
-    'eventex.subscriptions.apps.SubscriptionsConfig',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "test_without_migrations",
+    "django_extensions",
+    "eventex.core",
+    "eventex.subscriptions.apps.SubscriptionsConfig",
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'eventex.urls'
+ROOT_URLCONF = "eventex.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'eventex.wsgi.application'
+WSGI_APPLICATION = "eventex.wsgi.application"
 
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-default_dburl = 'sqlite:///' + str(Path.joinpath(BASE_DIR, 'db.sqlite3'))
+default_dburl = "sqlite:///" + str(Path.joinpath(BASE_DIR, "db.sqlite3"))
 
-DATABASES = {
-    'default': config('DATABASE_URL', default=default_dburl, cast=dburl)
-}
+DATABASES = {"default": config("DATABASE_URL", default=default_dburl, cast=dburl)}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -108,9 +106,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'pt-br'
+LANGUAGE_CODE = "pt-br"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -122,33 +120,33 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = str(Path.joinpath(BASE_DIR, 'staticfiles'))
+STATIC_URL = "/static/"
+STATIC_ROOT = str(Path.joinpath(BASE_DIR, "staticfiles"))
 
 # AWS
 
-#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-#AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
-#AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
-#AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+# AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+# AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 
-#AWS_HEADERS = {
-    # see http://developer.yahoo.com/performance/rules.html#expires
+# AWS_HEADERS = {
+# see http://developer.yahoo.com/performance/rules.html#expires
 #    'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
 #    'Cache-Control': 'max-age=42608000',
-#}
+# }
 
-#Email configuration
+# Email configuration
 
-EMAIL_BACKEND = config('EMAIL_BACKEND')
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_PORT = config('EMAIL_PORT', cast=int)
-EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_BACKEND = config("EMAIL_BACKEND")
+EMAIL_HOST = config("EMAIL_HOST")
+EMAIL_PORT = config("EMAIL_PORT", cast=int)
+EMAIL_USE_TLS = config("EMAIL_USE_TLS", cast=bool)
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 
-'''
+"""
 OBS. Necessita de estudo especifico em relação a questões de segurança.
 # CONFIGURAR AWS S3 Arquivos
 ##  static files
@@ -191,4 +189,4 @@ OBS. Necessita de estudo especifico em relação a questões de segurança.
     }
 ]
 
-'''
+"""

@@ -13,10 +13,10 @@ class EmailCreateView(EmailCreateMixin, CreateView):
         return response
 
 
-new = EmailCreateView.as_view(model=Subscription,
-                              form_class=SubscriptionForm,
-                              email_subject='Confirmação de inscrição')
+new = EmailCreateView.as_view(
+    model=Subscription,
+    form_class=SubscriptionForm,
+    email_subject="Confirmação de inscrição",
+)
 
 detail = DetailView.as_view(model=Subscription)
-
-

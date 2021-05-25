@@ -8,7 +8,7 @@ class EmailCreateMixin:
     email_context_name = None
     email_template_name = None
     email_from = settings.DEFAULT_FROM_EMAIL
-    email_subject = ''
+    email_subject = ""
 
     def send_mail(self):
         # Send subscription email
@@ -26,7 +26,7 @@ class EmailCreateMixin:
             return self.email_template_name
 
         meta = self.object._meta
-        return '{}/{}_email.txt'.format(meta.app_label, meta.model_name)
+        return "{}/{}_email.txt".format(meta.app_label, meta.model_name)
 
     def get_email_to(self):
         if self.email_to:
@@ -42,4 +42,3 @@ class EmailCreateMixin:
         context = dict(kwargs)
         context.setdefault(self.get_email_context_name(), self.object)
         return context
-

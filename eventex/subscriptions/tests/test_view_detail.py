@@ -6,21 +6,21 @@ from eventex.subscriptions.models import Subscription
 class SubscriptionDetailGet(TestCase):
     def setUp(self):
         self.obj = Subscription.objects.create(
-            name='Zandor Leal',
-            cpf='12345678901',
-            email='zandor@leal.com',
-            phone='21-999999999'
+            name="Zandor Leal",
+            cpf="12345678901",
+            email="zandor@leal.com",
+            phone="21-999999999",
         )
-        self.resp = self.client.get(r('subscriptions:detail', self.obj.pk.int))
+        self.resp = self.client.get(r("subscriptions:detail", self.obj.pk.int))
 
     def test_get(self):
         self.assertEqual(200, self.resp.status_code)
 
     def test_template(self):
-        self.assertTemplateUsed(self.resp,
-                                'subscriptions/subscription_detail.html')
+        self.assertTemplateUsed(self.resp, "subscriptions/subscription_detail.html")
+
     def test_context(self):
-        subscription = self.resp.context['subscription']
+        subscription = self.resp.context["subscription"]
         self.assertIsInstance(subscription, Subscription)
 
     def test_html(self):
@@ -33,5 +33,5 @@ class SubscriptionDetailGet(TestCase):
 
 class SubscriptionDetailNotFound(TestCase):
     def test_not_found(self):
-        resp = self.client.get(r('subscriptions:detail', 0))
+        resp = self.client.get(r("subscriptions:detail", 0))
         self.assertEqual(404, resp.status_code)

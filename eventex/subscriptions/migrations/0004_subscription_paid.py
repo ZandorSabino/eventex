@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('subscriptions', '0003_remove_subscription_url_hash'),
+        ("subscriptions", "0003_remove_subscription_url_hash"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='subscription',
-            name='paid',
+            model_name="subscription",
+            name="paid",
             field=models.BooleanField(default=False),
         ),
     ]

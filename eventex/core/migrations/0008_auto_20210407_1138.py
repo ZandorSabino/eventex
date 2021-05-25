@@ -7,16 +7,16 @@ class Migration(migrations.Migration):
 
     atomic = False
     dependencies = [
-        ('core', '0007_course'),
+        ("core", "0007_course"),
     ]
 
     operations = [
         migrations.RenameModel(
-            old_name='Course',
-            new_name='CourseOld',
+            old_name="Course",
+            new_name="CourseOld",
         ),
         migrations.AlterModelOptions(
-            name='courseold',
-            options={'verbose_name': 'curso', 'verbose_name_plural': 'cursos'},
+            name="courseold",
+            options={"verbose_name": "curso", "verbose_name_plural": "cursos"},
         ),
     ]

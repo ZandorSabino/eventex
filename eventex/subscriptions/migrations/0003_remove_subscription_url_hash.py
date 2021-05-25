@@ -6,12 +6,12 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('subscriptions', '0002_auto_20210307_1936'),
+        ("subscriptions", "0002_auto_20210307_1936"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='subscription',
-            name='url_hash',
+            model_name="subscription",
+            name="url_hash",
         ),
     ]

@@ -7,19 +7,26 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Speaker',
+            name="Speaker",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
-                ('slug', models.SlugField()),
-                ('website', models.URLField()),
-                ('photo', models.URLField()),
-                ('description', models.TextField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
+                ("slug", models.SlugField()),
+                ("website", models.URLField()),
+                ("photo", models.URLField()),
+                ("description", models.TextField()),
             ],
         ),
     ]

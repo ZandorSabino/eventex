@@ -6,14 +6,17 @@ from eventex.subscriptions.admin import SubscriptionModelAdmin, Subscription, ad
 
 class SubscriptionModelAdminTest(TestCase):
     def setUp(self):
-        Subscription.objects.create(name='Zandor Sabino', cpf='12345678901',
-                                    email='zandor@sabino.net', phone='21-999999999')
+        Subscription.objects.create(
+            name="Zandor Sabino",
+            cpf="12345678901",
+            email="zandor@sabino.net",
+            phone="21-999999999",
+        )
         self.model_admin = SubscriptionModelAdmin(Subscription, admin.site)
 
     def test_has_action(self):
         """Action mark_as_paid should be instaled."""
-        model_admin = SubscriptionModelAdmin(Subscription, admin.site)
-        self.assertIn('mark_as_paid', model_admin.actions)
+        self.assertIn("mark_as_paid", self.model_admin.actions)
 
     def test_mark_all(self):
         """It should mark all selected subscriptions as paid."""
@@ -23,7 +26,7 @@ class SubscriptionModelAdminTest(TestCase):
     def test_message(self):
         """It should sen a message to user."""
         mock = self.call_action()
-        mock.assert_called_once_with(None, '1 inscrição foi marcada como paga.')
+        mock.assert_called_once_with(None, "1 inscrição foi marcada como paga.")
 
     def call_action(self):
         queryset = Subscription.objects.all()

@@ -9,33 +9,31 @@ def copy_src_to_dst(Source, Destination):
             title=src.title,
             start=src.start,
             description=src.description,
-            slots=src.slots
+            slots=src.slots,
         )
         dst.save()
         dst.speakers.set(src.speakers.all())
         src.delete()
 
+
 def foward_course_abc_to_mti(apps, schema_editor):
     copy_src_to_dst(
-        apps.get_model('core', 'CourseOld'),
-        apps.get_model('core', 'Course')
+        apps.get_model("core", "CourseOld"), apps.get_model("core", "Course")
     )
+
 
 def backward_course_abc_to_mti(apps, schema_editor):
     copy_src_to_dst(
-        apps.get_model('core', 'CourseOld'),
-        apps.get_model('core', 'Course')
+        apps.get_model("core", "CourseOld"), apps.get_model("core", "Course")
     )
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0009_course'),
+        ("core", "0009_course"),
     ]
 
     operations = [
-        migrations.RunPython(foward_course_abc_to_mti,
-                             backward_course_abc_to_mti)
-
+        migrations.RunPython(foward_course_abc_to_mti, backward_course_abc_to_mti)
     ]

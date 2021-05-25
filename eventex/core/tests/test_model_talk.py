@@ -7,7 +7,7 @@ from eventex.core.models import Talk, Course
 class TalkModelTest(TestCase):
     def setUp(self):
         self.talk = Talk.objects.create(
-            title='Título da Palestra',
+            title="Título da Palestra",
         )
 
     def test_create(self):
@@ -16,61 +16,61 @@ class TalkModelTest(TestCase):
     def test_has_speakers(self):
         """Talk has many Speakers and vice-versa"""
         self.talk.speakers.create(
-            name='Henrique Bastos',
-            slug='henrique-bastos',
-            website='http://henriquebastos.net'
+            name="Henrique Bastos",
+            slug="henrique-bastos",
+            website="http://henriquebastos.net",
         )
         self.assertEqual(1, self.talk.speakers.count())
 
     def test_description_blank(self):
-        field = Talk._meta.get_field('description')
+        field = Talk._meta.get_field("description")
         self.assertTrue(field.blank)
 
     def test_speakers_blank(self):
-        field = Talk._meta.get_field('speakers')
+        field = Talk._meta.get_field("speakers")
         self.assertTrue(field.blank)
 
     def test_start_blank(self):
-        field = Talk._meta.get_field('start')
+        field = Talk._meta.get_field("start")
         self.assertTrue(field.blank)
 
     def test_start_null(self):
-        field = Talk._meta.get_field('start')
+        field = Talk._meta.get_field("start")
         self.assertTrue(field.null)
 
     def test_str(self):
-        self.assertEqual('Título da Palestra', str(self.talk))
+        self.assertEqual("Título da Palestra", str(self.talk))
 
     def test_ordering(self):
-        self.assertListEqual(['start'], Talk._meta.ordering)
+        self.assertListEqual(["start"], Talk._meta.ordering)
 
 
 class PeriodManagerTest(TestCase):
     def setUp(self):
-        Talk.objects.create(title='Morning Talk', start='11:59')
-        Talk.objects.create(title='Afternoon Talk', start='12:00')
+        Talk.objects.create(title="Morning Talk", start="11:59")
+        Talk.objects.create(title="Afternoon Talk", start="12:00")
 
     def test_manager(self):
         self.assertIsInstance(Talk.objects, PeriodManager)
 
     def test_at_morning(self):
         qs = Talk.objects.at_morning()
-        expected = ['Morning Talk']
+        expected = ["Morning Talk"]
         self.assertQuerysetEqual(qs, expected, lambda o: o.title)
 
     def test_at_afternoon(self):
         qs = Talk.objects.at_afternoon()
-        expected = ['Afternoon Talk']
+        expected = ["Afternoon Talk"]
         self.assertQuerysetEqual(qs, expected, lambda o: o.title)
 
 
 class CourseModelTest(TestCase):
     def setUp(self):
         self.course = Course.objects.create(
-            title='Título do Curso',
-            start='09:00',
-            description='Descrição do curso.',
-            slots=20
+            title="Título do Curso",
+            start="09:00",
+            description="Descrição do curso.",
+            slots=20,
         )
 
     def test_create(self):
@@ -79,17 +79,17 @@ class CourseModelTest(TestCase):
     def test_speakers(self):
         """Course has many speakers and vice-versa"""
         self.course.speakers.create(
-            name='Henrique Bastos',
-            slug='henrique-bastos',
-            website='http://henriquebastos.net'
+            name="Henrique Bastos",
+            slug="henrique-bastos",
+            website="http://henriquebastos.net",
         )
         self.assertEqual(1, self.course.speakers.count())
 
     def test_str(self):
-        self.assertEqual('Título do Curso', str(self.course))
+        self.assertEqual("Título do Curso", str(self.course))
 
     def test_manager(self):
         self.assertIsInstance(Course.objects, PeriodManager)
 
     def test_ordering(self):
-        self.assertListEqual(['start'], Course._meta.ordering)
+        self.assertListEqual(["start"], Course._meta.ordering)
