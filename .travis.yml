@@ -6,10 +6,11 @@ python:
   - "3.9"
 install:
   - cp contrib/env-sample .env
+  - pip install coveralls
   - pip install pipenv
   - pipenv install --skip-lock
   - python manage.py migrate
 script:
   - coverage run --source='.' manage.py test
 after_success:
-  - coverage report
+  - coveralls
