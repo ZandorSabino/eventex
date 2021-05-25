@@ -1,5 +1,9 @@
 # Eventex
 
+___
+[![Build Status](https://travis-ci.com/ZandorSabino/eventex.svg?branch=master)](https://travis-ci.com/ZandorSabino/eventex)
+___
+
 Sistema desenvolvido no curso [Welcome To The Django](https://henriquebastos.net/produtos/welcome-to-the-django).
 
 ## Como desenvolver?
