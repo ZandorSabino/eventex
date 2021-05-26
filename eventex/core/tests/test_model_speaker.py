@@ -32,7 +32,7 @@ class SpeakerModelTest(TestCase):
         self.assertEqual(url, self.speaker.get_absolute_url())
 
     def test_verbose_name_plural(self):
-        self.assertEqual(str(Speaker._meta.verbose_name_plural), 'palestrantes')
+        self.assertEqual(str(Speaker._meta.verbose_name_plural), "palestrantes")
 
     def test_verbose_name(self):
-        self.assertEqual(str(Speaker._meta.verbose_name), 'palestrante')
+        self.assertEqual(str(Speaker._meta.verbose_name), "palestrante")

@@ -8,3 +8,4 @@ staticfiles
 .ipynb_checkpoints/
 .vscode
 htmlcov
+.coverage
