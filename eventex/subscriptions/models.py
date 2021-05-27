@@ -6,7 +6,7 @@ from eventex.subscriptions.validators import validate_cpf
 
 
 class Subscription(models.Model):
-    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4(), editable=False)
+    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField("nome", max_length=100)
     cpf = models.CharField("CPF", max_length=11, validators=[validate_cpf])
     email = models.EmailField("e-mail", blank=True)

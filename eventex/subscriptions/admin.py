@@ -21,7 +21,7 @@ class SubscriptionModelAdmin(admin.ModelAdmin):
     actions = ["mark_as_paid"]
 
     def subscribed_today(self, obj):
-        return obj.created_at == now().date()
+        return obj.created_at.date() == now().date()
 
     subscribed_today.short_description = "inscrito hoje?"
     subscribed_today.boolean = True
@@ -32,7 +32,7 @@ class SubscriptionModelAdmin(admin.ModelAdmin):
         if count == 1:
             msg = "{} inscrição foi marcada como paga."
         else:
-            msg = "{} inscrições fora marcadas como pagas."
+            msg = "{} inscrições foram marcadas como pagas."
 
         self.message_user(request, msg.format(count))
 
