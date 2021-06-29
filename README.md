@@ -16,15 +16,13 @@ Sistema desenvolvido no curso [Welcome To The Django](https://henriquebastos.net
 6. Execute os testes
 
 ```console
-git clone git@github.com/ZandorSabino/eventex.git wttd
-cd wttd
+git clone https://github.com/ZandorSabino/eventex.git ~/<sua-pasta>/wttd
+cd ~/<sua-pasta>/wttd
 python -m venv .wttd
-pip install pipenv
-pipenv install --dev
+pip install --require-hashes -r requirements.txt
 copy contrib/env-sample .env
 pytest
 ```
-
 
 ## Como fazer o deploy?
 
