@@ -16,7 +16,6 @@ Sistema desenvolvido no curso [Welcome To The Django](https://henriquebastos.net
 6. Execute os testes
 
 ```console
-
 git clone https://github.com/ZandorSabino/eventex.git ~/<sua-pasta>/wttd
 cd ~/<sua-pasta>/wttd
 python -m venv .wttd
