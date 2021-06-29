@@ -4,7 +4,7 @@ python:
 install:
   - cp contrib/env-sample .env
   - pip install coveralls
-  - pip install --require-hashes -r requirements.txt
+  - pip install -r requirements.txt --require-hashes
   - python manage.py migrate
 script:
   - coverage run --source='.' manage.py test
